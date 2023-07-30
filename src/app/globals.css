@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  cursor: none;
+}
+
+
+@font-face {
+  font-family: "Megapixel-Regular";
+  src: url('../../public/fonts/Megapixel-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.cursor {
+  position: absolute;
+  width: 5px; 
+  height: 5px; 
+  background-color: #c8c8c8; 
+  pointer-events: none;
+}
+
+.pixel {
+  position: absolute;
+  background-color: #d6d6d6;
+  pointer-events: none;
+  opacity: 0; 
+  transition: opacity 1s ease-out, transform 1s ease-out; 
+}
+
