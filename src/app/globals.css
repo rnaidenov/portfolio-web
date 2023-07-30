@@ -35,19 +35,3 @@ body {
   font-style: normal;
 }
 
-.cursor {
-  position: absolute;
-  width: 5px; 
-  height: 5px; 
-  background-color: #c8c8c8; 
-  pointer-events: none;
-}
-
-.pixel {
-  position: absolute;
-  background-color: #d6d6d6;
-  pointer-events: none;
-  opacity: 0; 
-  transition: opacity 1s ease-out, transform 1s ease-out; 
-}
-

@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from "react";
+import './styles.scss';
 
 export default function PixelatedCursor() {
   const cursorRef = useRef();
@@ -25,8 +26,8 @@ export default function PixelatedCursor() {
 
     // Update the position of the cursor and pixel grid on mouse move
     document.addEventListener('mousemove', e => {
-      const x = e.clientX;
-      const y = e.clientY;
+      const x = e.pageX;
+      const y = e.pageY;
 
       cursor.style.left = x + 'px';
       cursor.style.top = y + 'px';
@@ -53,7 +54,7 @@ export default function PixelatedCursor() {
   return (
     <div>
       <div ref={cursorRef} className="cursor"></div>
-      <div ref={pixelsRef} className="pixels"></div>
+      <div ref={pixelsRef} ></div>
     </div>
   );
 }

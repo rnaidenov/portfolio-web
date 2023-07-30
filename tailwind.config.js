@@ -10,7 +10,8 @@ module.exports = {
       colors: {
         'raisin-black': '#28262C',
         'outer-space': '#374043',
-        'mint-cream': '#F0F7F4'
+        'mint-cream': '#F0F7F4',
+        'tomato-red': '#E78383'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

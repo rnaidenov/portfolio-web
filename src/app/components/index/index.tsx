@@ -1,5 +1,7 @@
-export const Index = () => {
 
+import Cursor from "../cursor/cursor"
+
+export const Index = () => {
   return (<>
     <div className="bg-raisin-black w-full h-screen flex flex-col items-center justify-center text-center">
       <div>
