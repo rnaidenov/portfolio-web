@@ -1,0 +1,12 @@
+#myLine {
+  position: fixed;
+  left: 25%; /* X-coordinate of the starting point */
+  // top: 50px; /* Y-coordinate of the starting point */
+  top: 0; /* Y-coordinate of the starting point */
+  width: 2px;
+  height: 0;
+  background: black;
+  z-index: 0;
+}
+
+// TODO: tailwind

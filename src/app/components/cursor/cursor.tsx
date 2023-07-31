@@ -53,8 +53,8 @@ export default function PixelatedCursor() {
 
   return (
     <div>
-      <div ref={cursorRef} className="cursor"></div>
-      <div ref={pixelsRef} ></div>
+      <div ref={cursorRef} className="cursor z-40"></div>
+      <div ref={pixelsRef}></div>
     </div>
   );
 }
