@@ -36,15 +36,10 @@ body {
   font-style: normal;
 }
 
-/* TODO: */
-.mask{
-  mask-image: url('../../public/selection.svg');
-  mask-repeat: no-repeat;
-  mask-size: 40px;
-  background: var(--tomato-red);
-  position: absolute;
-  color: black;
-  transform: scale(1.125);
-  /* transition: transform 0.25s ease-in-out; */
+@font-face {
+  font-family: "Onyx-Regular";
+  src: url('../../public/fonts/Onyx-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 

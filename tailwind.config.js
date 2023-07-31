@@ -20,6 +20,7 @@ module.exports = {
       },
       fontFamily: {
         megapixel: ['Megapixel-Regular', 'sans-serif'],
+        onyx: ['Onyx-Regular', 'sans-serif'],
       }
     },
   },

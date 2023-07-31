@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image'
 import './styles.scss';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { PageContextType } from '../page-provider/types';
+import { PageContext } from '../page-provider/context';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 export const About = () => {
   const aboutRef = useRef();
   const navRef = useRef();
+
+  const { setCurrPageIdx } = useContext<PageContextType>(PageContext);
 
   // TODO: Externalize nav
   useEffect(() => {
@@ -22,6 +26,11 @@ export const About = () => {
       // and once it exits the viewport, so we check if it is currently
       // intersecting to avoid triggering the animation twice
       if (entries[0].isIntersecting) {
+        // TODO: Enums for page indexes
+
+        setCurrPageIdx(1);
+        console.log("🚀 ~ file: about.tsx:32 ~ observer ~ setCurrPageIdx:", 'setCurrPageIdx(1)')
+
         gsap.fromTo(navRef.current, { height: '7.5vh', opacity: 0, }, { height: '50px', duration: 0.625, ease: 'power2.inOut', opacity: 1, });
         gsap.fromTo(aboutRef.current, { backgroundColor: '#28262C' }, { duration: 1.25, backgroundColor: '#F0F7F4' });
       }
@@ -77,34 +86,6 @@ export const About = () => {
   return (
     <div ref={aboutRef} className="relative h-[300vh] bg-raisin-black w-full flex flex-col flex-start text-center">
       <div className='inner h-screen' />
-      <nav ref={navRef} className="bg-raisin-black h-12 w-full fixed top-0 opacity-0 z-40">
-        <ul className="flex gap-8 h-full justify-center items-center">
-          <li>
-            <a
-              href="#about"
-              className="text-white hover:text-gray-300 transition duration-300"
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href="#work"
-              className="text-white hover:text-gray-300 transition duration-300"
-            >
-              Work
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="text-white hover:text-gray-300 transition duration-300"
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
 
       <div id='about-content'>
         <div id="myLine" className='z-0' />
