@@ -108,7 +108,7 @@ export const About = () => {
 
       <div id='about-content'>
         <div id="myLine" className='z-0' />
-        <Image src="/me.webp" width={200} height={200} className='ml-[17%] z-20' />
+        <Image src="/me.webp" width={200} height={200} alt="Radoslav Naydenov" className='TODO: ml-[17%] z-20 rounded-md' />
       </div>
 
     </div>

@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123 123" width="123" height="123">
+	<title>selection2-svg</title>
+	<defs>
+		<image  width="123" height="123" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7AQMAAABuCW08AAAAAXNSR0IB2cksfwAAAAZQTFRFAAAAAAAApWe5zwAAAAJ0Uk5TAP9bkSK1AAAAH0lEQVR4nGNgGAVDF8j/h4JRgVGBUYFRAdoLjIKRCgBItR4kwAlqiwAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		.s0 { fill: #000000 } 
+	</style>
+	<g id="Layer">
+		<path id="Layer" fill-rule="evenodd" class="s0" d="m12.2 98.7v12h12.7v12.2h-18.8c-3.4 0-6.1-2.8-6.1-6.1v-18.1zm15.7-78.2h67.6c3.4 0 6.1 2.8 6.1 6.1v69.8c0 3.3-2.7 6.1-6.1 6.1h-67.6c-3.4 0-6.1-2.8-6.1-6.1v-69.8c0-3.3 2.7-6.1 6.1-6.1zm63.4 10.3h-59.2v61.4h59.2zm-91.3-6.7v-18c0-3.4 2.7-6.1 6.1-6.1h18.7v12.2h-12.6v11.9zm110.3-11.9h-12.7v-12.2h18.8c3.3 0 6.1 2.7 6.1 6.1v18h-12.2zm12.2 86.5v18.1c0 3.4-2.8 6.1-6.1 6.1h-18.8v-12.2h12.7v-12z"/>
+		<use id="Layer 1" href="#img1" x="0" y="0"/>
+	</g>
+</svg>

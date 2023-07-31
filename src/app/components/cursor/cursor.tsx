@@ -1,11 +1,13 @@
 'use client';
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import './styles.scss';
 
 export default function PixelatedCursor() {
   const cursorRef = useRef();
   const pixelsRef = useRef();
+
+  const [arePixelsVisible, setArePixelsVisible] = useState(true);
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -28,6 +30,9 @@ export default function PixelatedCursor() {
     document.addEventListener('mousemove', e => {
       const x = e.pageX;
       const y = e.pageY;
+
+      // TODO: Enhance performance by only updating the cursor position when it has changed
+      setArePixelsVisible(!['A', 'LI', 'H1', 'P'].includes(e.target.tagName))
 
       cursor.style.left = x + 'px';
       cursor.style.top = y + 'px';
@@ -54,7 +59,7 @@ export default function PixelatedCursor() {
   return (
     <div>
       <div ref={cursorRef} className="cursor z-40"></div>
-      <div ref={pixelsRef}></div>
+      <div ref={pixelsRef} style={{ visibility: arePixelsVisible ? 'visible' : 'hidden' }}></div>
     </div>
   );
 }
