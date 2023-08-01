@@ -18,8 +18,6 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { x, y } = useMousePosition();
 
-  const { currPageIdx, lastPageIdx } = useContext<PageContextType>(PageContext)
-
   const ulRef: RefObject<HTMLUListElement> = useRef(null);
 
   const maskPos: DOMRect | undefined = ulRef.current?.getBoundingClientRect();
@@ -62,13 +60,12 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate }) => {
               WebkitMaskSize: `${maskSizePx}px`,
             }}
             transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
-
           >
             <MenuItems />
           </motion.ul>
         )
       }
-      <ul className={`z-40 flex ${flexDir} items-center gap-${fixed ? 4 : 0} justify-center h-full p-4`}>
+      <ul className={`z-40 flex ${flexDir} items-center gap-${fixed ? '4' : '0'} justify-center h-full`}>
         <MenuItems />
       </ul>
     </motion.nav>
