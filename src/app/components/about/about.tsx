@@ -15,7 +15,7 @@ export const About = () => {
   const aboutRef = useRef();
   const navRef = useRef();
 
-  const { setCurrPageIdx } = useContext<PageContextType>(PageContext);
+  const { updatePageIdx } = useContext<PageContextType>(PageContext);
 
   // TODO: Externalize nav
   useEffect(() => {
@@ -28,10 +28,8 @@ export const About = () => {
       if (entries[0].isIntersecting) {
         // TODO: Enums for page indexes
 
-        setCurrPageIdx(1);
-        console.log("🚀 ~ file: about.tsx:32 ~ observer ~ setCurrPageIdx:", 'setCurrPageIdx(1)')
+        updatePageIdx(1);
 
-        gsap.fromTo(navRef.current, { height: '7.5vh', opacity: 0, }, { height: '50px', duration: 0.625, ease: 'power2.inOut', opacity: 1, });
         gsap.fromTo(aboutRef.current, { backgroundColor: '#28262C' }, { duration: 1.25, backgroundColor: '#F0F7F4' });
       }
 
@@ -39,7 +37,7 @@ export const About = () => {
       //   gsap.to(navRef.current, { opacity: 0, duration: 0.625, ease: 'power2.inOut' });
       // }
     }, {
-      threshold: 0.9 // This means "when 10% of the target element is visible"
+      threshold: 0.5 // This means "when 10% of the target element is visible"
     });
 
     observer.observe(x);

@@ -5,9 +5,10 @@
   mask-size: 40px;
   background: var(--tomato-red);
   position: absolute;
-  left: 50%;
   color: black;
-  transform: scale(1.125) translate(-50%);
+  left: 0;
+  width: 100%;
+  transform: scale(1.125);
   /* transition: transform 0.25s ease-in-out; */
 }
 

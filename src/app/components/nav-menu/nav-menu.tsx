@@ -2,61 +2,75 @@
 
 import useMousePosition from "@/app/hooks/use-mouse-position";
 import { motion } from "framer-motion"
-import { useState, useRef, RefObject, useContext } from "react";
+import { useState, useRef, RefObject, useContext, useEffect } from "react";
 import { MenuItems } from "./menu-items";
 import styles from './nav-menu.module.scss'
 import { PageContext } from "../page-provider/context";
 import { PageContextType } from "../page-provider/types";
 
 interface NavMenuProps {
-  forceShow?: boolean
+  hide?: boolean
+  fixed?: boolean
+  animate?: boolean
 }
 
-export const NavMenu: React.FC<NavMenuProps> = ({ forceShow, col }) => {
+export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate }) => {
   const [isHovered, setIsHovered] = useState(false);
   const { x, y } = useMousePosition();
 
-  const { currPageIdx } = useContext<PageContextType>(PageContext)
-  console.log("🚀 ~ file: nav-menu.tsx:20 ~ currPageIdx:", currPageIdx)
+  const { currPageIdx, lastPageIdx } = useContext<PageContextType>(PageContext)
 
   const ulRef: RefObject<HTMLUListElement> = useRef(null);
 
   const maskPos: DOMRect | undefined = ulRef.current?.getBoundingClientRect();
   const maskSizePx = isHovered ? 40 : 10;
 
-  const flexDir: string = 'flex-' + (currPageIdx === 0 ? 'col' : 'row');
+  const flexDir: string = 'flex-' + (fixed ? 'row' : 'col');
 
-  if ((typeof currPageIdx !== 'number' || currPageIdx === 0) && !forceShow) {
+  if (hide) {
     return null;
   }
 
-  // TODO: OBserver
-
   return (
-    <nav
+    <motion.nav
       className={`
-        mt-8 font-onyx min-w-72 z-50 bg-raisin-black min-w-[150px] text-xl text-mint-cream
-        ${currPageIdx === 0 ? 'relative' : 'fixed'}
+        font-onyx min-w-72 z-50 bg-raisin-black min-w-[150px] text-xl text-mint-cream
+        ${fixed ? 'fixed w-full top-0' : 'relative mt-8'}
       `}
       onMouseEnter={() => { setIsHovered(true) }}
       onMouseLeave={() => { setIsHovered(false) }}
+      animate={animate ?
+        {
+          height: fixed ? '75px' : '7.5vh',
+          opacity: fixed ? 1 : 0,
+        } :
+        {}
+      }
+      transition={{
+        type: "spring",
+        duration: 0.75,
+        bounce: 0.5
+      }}
     >
-      <motion.ul
-        ref={ulRef}
-        className={`${styles.mask} z-50 flex ${flexDir} items-center justify-center p-8`}
-        animate={{
-          WebkitMaskPosition: `${x - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${y - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
-          WebkitMaskSize: `${maskSizePx}px`,
-        }}
-        transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+      {
+        !fixed && (
+          <motion.ul
+            ref={ulRef}
+            className={`${styles.mask} z-50 flex ${flexDir} items-center justify-center`}
+            animate={{
+              WebkitMaskPosition: `${x - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${y - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
+              WebkitMaskSize: `${maskSizePx}px`,
+            }}
+            transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
 
-      >
-        <MenuItems />
-      </motion.ul>
-
-      <ul className={`z-40 flex ${flexDir} items-center justify-center p-8`}>
+          >
+            <MenuItems />
+          </motion.ul>
+        )
+      }
+      <ul className={`z-40 flex ${flexDir} items-center gap-${fixed ? 4 : 0} justify-center h-full p-4`}>
         <MenuItems />
       </ul>
-    </nav>
+    </motion.nav>
   )
 }
