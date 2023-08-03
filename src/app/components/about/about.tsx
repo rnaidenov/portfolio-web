@@ -1,93 +1,120 @@
 'use client';
 
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image'
 import './styles.scss';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PageContextType } from '../page-provider/types';
 import { PageContext } from '../page-provider/context';
-
-gsap.registerPlugin(ScrollTrigger);
-
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 
 export const About = () => {
   const aboutRef = useRef();
-  const navRef = useRef();
+  const imgRef = useRef(null);
+
+  const { scrollY } = useScroll();
 
   const { updatePageIdx } = useContext<PageContextType>(PageContext);
 
-  // TODO: Externalize nav
-  useEffect(() => {
+  const [imgYCenter, setImgYCenter] = useState(0);
+  const [imgHeight, setImgHeight] = useState(0);
+  const [pin, setPin] = useState({ top: 'unset', active: false });
 
+  const [isInView, setIsInView] = useState(false);
+
+  const lineProgress = useTransform(scrollY, [0, imgYCenter], [0, 100]);
+
+  const [currLineProgress, setHookedYPosition] = useState(0);
+  console.log("🚀 ~ file: about.tsx:31 ~ About ~ currLineProgress:", currLineProgress)
+  useMotionValueEvent(lineProgress, "change", (latest) => {
+    setHookedYPosition(latest);
+  })
+
+  useEffect(() => {
+    if (currLineProgress === 100) {
+      const top = imgRef.current.getBoundingClientRect().top;
+
+      setTimeout(() => {
+        setPin({ top, active: true });
+      }, 100);
+      // imgRef.current.style.position = 'fixed';
+      // imgRef.current.style.top = `${top}px`;
+    } else {
+      // imgRef.current.style.top = `unset`;
+      // imgRef.current.style.position = 'relative';
+
+      setPin({ top: 'unset', active: false })
+    }
+  }, [currLineProgress])
+
+  useEffect(() => {
+    if (imgRef.current) {
+      const rect = imgRef.current.getBoundingClientRect();
+      setImgYCenter(rect.top + imgHeight / 2 - 75 - window.innerHeight / 2);
+      console.log("🚀 ~ file: about.tsx:55 ~ useEffect ~ rect.top + imgHeight / 2 - 75 - window.innerHeight / 2:", rect.top + imgHeight / 2 - 75 - window.innerHeight / 2)
+      setImgHeight(rect.height);
+    }
+  }, [imgRef.current]);
+
+  useEffect(() => {
     const x = document.querySelector('.inner');
     const observer = new IntersectionObserver(entries => {
-      // The callback will be called once the element enters the viewport
-      // and once it exits the viewport, so we check if it is currently
-      // intersecting to avoid triggering the animation twice
       if (entries[0].isIntersecting) {
-        // TODO: Enums for page indexes
-
         updatePageIdx(1);
-
+        setIsInView(true)
         gsap.fromTo(aboutRef.current, { backgroundColor: '#28262C' }, { duration: 1.25, backgroundColor: '#F0F7F4' });
+      } else {
+        setIsInView(false)
       }
-
-      // else {
-      //   gsap.to(navRef.current, { opacity: 0, duration: 0.625, ease: 'power2.inOut' });
-      // }
     }, {
-      threshold: 0.5 // This means "when 10% of the target element is visible"
+      threshold: 0.55
     });
 
     observer.observe(x);
 
-
-
-    // Cleanup function to avoid memory leaks
     return () => observer.unobserve(x);
   }, []);
 
-
-
-  useEffect(() => {
-    if (aboutRef.current === null) return;
-
-    const x = document.querySelector('.inner');
-
-
-    const imageElement = document.querySelector('img'); // Replace 'img' with a more specific selector if needed
-    const imageRect = imageElement.getBoundingClientRect();
-    const imageOffsetTop = imageRect.top;
-    const imageHeight = imageElement.offsetHeight;
-
-    gsap.to("#myLine", {
-      // height: `${imageOffsetTop - x.getBoundingClientRect().top + imageHeight / 2}px`, // The line ends at the center of the image
-      height: '50vh',
-      scrollTrigger: {
-        trigger: x,
-        start: 'top top', // When the top of the element hits the center of the viewport
-        end: 'bottom center', // When the bottom of the element hits the center of the viewport
-        scrub: true,
-      },
-    });
-
-    gsap.to('#about-content', {
-      scrollTrigger: {
-        trigger: imageElement,
-        start: 'center center', // When the top of the image hits the center of the viewport
-        pin: true, // Pin the image when it hits the start position
-      }
-    });
-  }, [aboutRef.current]);
+  console.log('pin.active', pin.active)
 
   return (
     <div ref={aboutRef} className="relative h-[300vh] bg-raisin-black w-full flex flex-col flex-start text-center">
       <div className='inner h-screen' />
 
       <div id='about-content'>
-        <div id="myLine" className='z-0' />
-        <Image src="/me.webp" width={200} height={200} alt="Radoslav Naydenov" className='TODO: ml-[17%] z-20 rounded-md' />
+        <motion.div
+          id="myLine"
+          className='z-0'
+          style={{
+            scaleY: lineProgress,
+            originY: 0
+          }}
+          transition={{
+            duration: 0.5,
+            ease: "easeInOut",
+            type: 'tween'
+          }}
+        />
+        <div
+          // TODO: rename
+          ref={imgRef}
+          className={"photo z-20 w-[200px] h-[200px] rounded-md overflow-hidden"}
+          style={pin.active ? { position: 'fixed', top: `${pin.top}px` } : { position: 'relative', top: 'unset' }}
+        >
+          <Image
+            src="/me.webp"
+            width={200}
+            height={200}
+            alt="Radoslav Naydenov"
+            className="invisible opacity-0"
+          />
+
+          <motion.div
+            className='absolute w-full h-full top-0 left-0 bg-black'
+            animate={{ transform: pin.active ? 'scale(1)' : 'scale(0)' }}
+            transition={{ duration: 0.625, ease: "backInOut", type: 'tween' }}
+          />
+        </div>
       </div>
 
     </div>

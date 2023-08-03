@@ -65,7 +65,7 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate }) => {
           </motion.ul>
         )
       }
-      <ul className={`z-40 flex ${flexDir} items-center gap-${fixed ? '4' : '0'} justify-center h-full`}>
+      <ul className={`z-40 flex ${flexDir} items-center gap-${fixed ? 4 : 0} justify-center h-full`}>
         <MenuItems />
       </ul>
     </motion.nav>
