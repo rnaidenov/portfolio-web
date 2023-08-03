@@ -1,0 +1,17 @@
+#myLine {
+  position: absolute;
+  left: 25%; /* X-coordinate of the starting point */
+  // top: 50px; /* Y-coordinate of the starting point */
+  top: 0; /* Y-coordinate of the starting point */
+  width: 2px;
+  height: 10px;
+  background: rgb(0, 0, 0);
+}
+
+.photo {
+  margin-left: calc(25% - 100px);
+}
+
+.photo.fixed {
+  position: fixed;
+}
