@@ -21,8 +21,8 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        megapixel: ['Megapixel-Regular', 'sans-serif'],
-        onyx: ['Onyx-Regular', 'sans-serif'],
+        scrn: ['Scr-Nsevcn-Regular', 'sans-serif'],
+        vt323: ['VT323-Regular', 'sans-serif'],
         computer: ['Computer-Says-No', 'sans-serif'],
       },
       animation: {

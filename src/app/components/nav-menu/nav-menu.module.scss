@@ -2,9 +2,9 @@
 .mask {
   mask-image: url('../../../../public/circle.svg');
   mask-repeat: no-repeat;
-  background: var(--flamy-orange);
+  background: var(--raisin-black);
   position: absolute;
-  color: black;
+  color:  var(--flamy-orange);
   width: 100%;
   transition: transform 0.25s ease-in-out;
 }

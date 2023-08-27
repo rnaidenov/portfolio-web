@@ -7,6 +7,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --tomato-red: #E78383;
+  --raisin-black: #28262C;
   --flamy-orange: #E28413;
 }
 
@@ -27,12 +28,27 @@ body {
     )
     rgb(var(--background-start-rgb));
   cursor: none;
+  overflow: hidden;
 }
 
 
 @font-face {
-  font-family: "Megapixel-Regular";
-  src: url('../../public/fonts/Megapixel-Regular.woff2');
+  font-family: "Scr-Nsevcn-Regular";
+  src: url('../../public/fonts/Scr-Nsevcn-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VT323-Regular";
+  src: url('../../public/fonts/VT323-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Scr-Nsevcn-Regular";
+  src: url('../../public/fonts/Scr-Nsevcn-Regular.woff2');
   font-weight: normal;
   font-style: normal;
 }

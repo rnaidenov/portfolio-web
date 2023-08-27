@@ -48,11 +48,12 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate, onMouseO
     setNavHeight(navHeight * 3);
   }, [navRef.current])
 
+  // TODO: As you leave hovered: fade out.
   return (
     <motion.nav
       ref={navRef}
       className={`
-        font-computer uppercase z-50 ${isHovered ? 'bg-wenge' : 'bg-raisin-black'} ${smoothTransitionClass} min-w-[150px] text-xl text-mint-cream
+        uppercase z-50 ${isHovered ? 'bg-wenge' : 'bg-raisin-black'} ${smoothTransitionClass} min-w-[150px] text-xl text-mint-cream
         ${fixed ? 'fixed w-full top-0' : 'relative mt-8'}
       `}
       onMouseEnter={() => { setIsHovered(true) }}
@@ -79,16 +80,17 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate, onMouseO
             animate={{
               WebkitMaskPosition: `${x - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${y - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
               WebkitMaskSize: `${maskSizePx}px`,
+              opacity: isHovered ? 1 : 0,
               // animate the under construction text
             }}
             // TODO: ease
-            transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
+            transition={{ type: "tween", ease: "easeInOut", duration: 0.25 }}
           >
-            Under <br /> construction
+            Under <br /> construction.
           </motion.div>
         )
       }
-      <ul ref={ulRef} className={`z-40 flex ${flexDir} items-center gap-${fixed ? 4 : 0} justify-center h-full`}>
+      <ul ref={ulRef} className={`z-40 flex ${flexDir} items-center gap-${fixed ? 4 : 0} justify-center h-full font-computer`}>
         <MenuItems />
       </ul>
     </motion.nav>
