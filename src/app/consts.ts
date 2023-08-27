@@ -1,1 +1,1 @@
-export const smoothTransitionClass = 'transition duration-300 transition-ease-in-out'; 
+export const smoothTransitionClass = 'transition duration-500 transition-out-expo'; 

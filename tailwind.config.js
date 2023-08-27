@@ -25,6 +25,10 @@ module.exports = {
         vt323: ['VT323-Regular', 'sans-serif'],
         computer: ['Computer-Says-No', 'sans-serif'],
       },
+      ransitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+      },
       animation: {
         zoominout: 'zoominout 2s ease-in-out infinite',
       },
