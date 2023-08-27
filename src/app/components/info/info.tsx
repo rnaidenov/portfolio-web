@@ -16,6 +16,7 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
   }, [isNavHovered, shouldShow])
 
 
+
   return (
     <div className={`hidden md:flex justify-between items-end absolute ${shouldShow ? 'visible' : 'invisible'} uppercase w-full bottom-0 left-0 pb-4 px-8`}>
       <div className="flex gap-8">
