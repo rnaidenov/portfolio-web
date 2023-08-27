@@ -7,6 +7,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --tomato-red: #E78383;
+  --flamy-orange: #E28413;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,8 +38,8 @@ body {
 }
 
 @font-face {
-  font-family: "Onyx-Regular";
-  src: url('../../public/fonts/Onyx-Regular.woff2');
+  font-family: "Computer-Says-No";
+  src: url('../../public/fonts/Computer-Says-No.woff2');
   font-weight: normal;
   font-style: normal;
 }

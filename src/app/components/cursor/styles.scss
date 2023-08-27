@@ -2,13 +2,13 @@
   position: absolute;
   width: 5px; 
   height: 5px; 
-  background-color: #E78383;
+  background-color: #E28413;
   pointer-events: none;
 }
 
 .pixel {
   position: absolute;
-  background-color: #E78383;
+  background-color: #E28413;
   pointer-events: none;
   opacity: 0; 
   transition: opacity 1s ease-out, transform 1s ease-out; 

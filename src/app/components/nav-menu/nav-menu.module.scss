@@ -1,14 +1,11 @@
 /* TODO: */
 .mask {
-  mask-image: url('../../../../public/selection.svg');
+  mask-image: url('../../../../public/circle.svg');
   mask-repeat: no-repeat;
-  mask-size: 40px;
-  background: var(--tomato-red);
+  background: var(--flamy-orange);
   position: absolute;
   color: black;
-  left: 0;
   width: 100%;
-  transform: scale(1.125);
-  /* transition: transform 0.25s ease-in-out; */
+  transition: transform 0.25s ease-in-out;
 }
 

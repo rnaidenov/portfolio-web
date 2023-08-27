@@ -4,8 +4,8 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image'
 import './styles.scss';
-import { PageContextType } from '../page-provider/types';
-import { PageContext } from '../page-provider/context';
+import { PageContextType } from '../../components/page-provider/types';
+import { PageContext } from '../../components/page-provider/context';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 
 export const About = () => {
@@ -88,6 +88,9 @@ export const About = () => {
           style={{
             scaleY: lineProgress,
             originY: 0
+          }}
+          animate={{
+            opacity: isInView ? 1 : 0,
           }}
           transition={{
             duration: 0.5,
