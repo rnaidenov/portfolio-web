@@ -17,7 +17,7 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
 
 
   return (
-    <div className={`absolute ${shouldShow ? 'visible' : 'invisible'} uppercase w-full bottom-0 left-0 pb-4 px-8 flex justify-between items-end`}>
+    <div className={`hidden md:flex justify-between items-end absolute ${shouldShow ? 'visible' : 'invisible'} uppercase w-full bottom-0 left-0 pb-4 px-8`}>
       <div className="flex gap-8">
         <p className={`flex gap-2 ${isNavHovered ? 'text-raisin-black' : 'text-mint-cream'}`}>Work:</p>
         <ul className={`flex gap-2 ${isNavHovered ? 'text-outer-space' : 'text-flamy-orange'}`}>
