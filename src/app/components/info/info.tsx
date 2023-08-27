@@ -15,13 +15,11 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
 
   }, [isNavHovered, shouldShow])
 
-
-
   return (
     <div className={`hidden md:flex justify-between items-end absolute ${shouldShow ? 'visible' : 'invisible'} uppercase w-full bottom-0 left-0 pb-4 px-8`}>
       <div className="flex gap-8">
         <p className={`flex gap-2 ${isNavHovered ? 'text-raisin-black' : 'text-mint-cream'}`}>Work:</p>
-        <ul className={`flex gap-2 ${isNavHovered ? 'text-outer-space' : 'text-flamy-orange'}`}>
+        <ul className={`flex items-center gap-2 ${isNavHovered ? 'text-outer-space' : 'text-flamy-orange'}`}>
           <li >
             FestWithMe
           </li>

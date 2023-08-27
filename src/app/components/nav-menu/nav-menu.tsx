@@ -27,7 +27,7 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate, onMouseO
   const ulRef: RefObject<HTMLUListElement> = useRef(null);
 
   const maskPos: DOMRect | undefined = maskRef.current?.getBoundingClientRect();
-  const maskSizePx = isHovered ? 125 : 10;
+  const maskSizePx = isHovered ? 125 : 0;
 
   const flexDir: string = 'flex-' + (fixed ? 'row' : 'col');
 
@@ -77,15 +77,15 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate, onMouseO
             // @ts-expect-error
             ref={maskRef}
             style={{ minHeight: `${navHeight}px`, top: `-${Math.round(navHeight / 3)}px` }}
-            className={`${styles.mask} z-50 flex ${flexDir} items-center justify-center absolute top-0 left-[50%] translate-x-[-50%]`}
+            className={`opacity-0 ${styles.mask} z-50 flex ${flexDir} items-center justify-center absolute top-0 left-[50%] translate-x-[-50%]`}
             animate={{
-              WebkitMaskPosition: `${(x ?? 0) - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${(y ?? 0) - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
+              WebkitMaskPosition: `${x - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${y - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
               WebkitMaskSize: `${maskSizePx}px`,
-              opacity: isHovered ? 1 : 0,
+              opacity: 1,
               // animate the under construction text
             }}
             // TODO: ease
-            transition={{ type: "tween", ease: "easeInOut", duration: 0.25 }}
+            transition={{ type: "tween", ease: "easeInOut", duration: 0.1 }}
           >
             Under <br /> construction.
           </motion.div>
