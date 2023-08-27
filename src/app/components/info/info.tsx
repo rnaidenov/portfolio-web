@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface InfoProps {
   isNavHovered: boolean
 }
 
-export const Info = ({ isNavHovered }) => {
+export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
   // use state for shouldShow; isNavHovered once, then shouldShow = true, don't change afterwards
   const [shouldShow, setShouldShow] = useState(false);
 

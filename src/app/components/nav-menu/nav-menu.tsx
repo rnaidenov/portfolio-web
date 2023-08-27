@@ -13,7 +13,7 @@ interface NavMenuProps {
   hide?: boolean
   fixed?: boolean
   animate?: boolean
-  onMouseOver: (hoverState: boolean) => void
+  onMouseOver?: (hoverState: boolean) => void
 }
 
 export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate, onMouseOver }) => {
@@ -36,7 +36,7 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate, onMouseO
   }
 
   useEffect(() => {
-    onMouseOver(isHovered);
+    onMouseOver?.(isHovered);
   }, [isHovered])
 
   useEffect(() => {
@@ -74,11 +74,12 @@ export const NavMenu: React.FC<NavMenuProps> = ({ hide, fixed, animate, onMouseO
       {
         !fixed && (
           <motion.div
+            // @ts-expect-error
             ref={maskRef}
             style={{ minHeight: `${navHeight}px`, top: `-${Math.round(navHeight / 3)}px` }}
             className={`${styles.mask} z-50 flex ${flexDir} items-center justify-center absolute top-0 left-[50%] translate-x-[-50%]`}
             animate={{
-              WebkitMaskPosition: `${x - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${y - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
+              WebkitMaskPosition: `${(x ?? 0) - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${(y ?? 0) - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
               WebkitMaskSize: `${maskSizePx}px`,
               opacity: isHovered ? 1 : 0,
               // animate the under construction text
