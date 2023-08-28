@@ -11,8 +11,8 @@ export const MenuItems = () => (
       </a>
     </li>
     <li>
-      <a href="#contact">
-        Contact
+      <a href="#contacts">
+        Contacts
       </a>
     </li>
   </>
