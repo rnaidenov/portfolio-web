@@ -6,8 +6,7 @@ import { NavMenu } from './components/nav-menu/nav-menu'
 import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
-  // TODO:
-  title: 'Rado - FS Dev',
+  title: 'Rado\'s Web Canvas',
   description: 'Radoslav Naydenov - Full-stack Developer',
 }
 
