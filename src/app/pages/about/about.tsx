@@ -26,7 +26,6 @@ export const About = () => {
   const lineProgress = useTransform(scrollY, [0, imgYCenter], [0, 100]);
 
   const [currLineProgress, setHookedYPosition] = useState(0);
-  console.log("🚀 ~ file: about.tsx:31 ~ About ~ currLineProgress:", currLineProgress)
   useMotionValueEvent(lineProgress, "change", (latest) => {
     setHookedYPosition(latest);
   })
@@ -52,7 +51,6 @@ export const About = () => {
     if (imgRef.current) {
       const rect = imgRef.current.getBoundingClientRect();
       setImgYCenter(rect.top + imgHeight / 2 - 75 - window.innerHeight / 2);
-      console.log("🚀 ~ file: about.tsx:55 ~ useEffect ~ rect.top + imgHeight / 2 - 75 - window.innerHeight / 2:", rect.top + imgHeight / 2 - 75 - window.innerHeight / 2)
       setImgHeight(rect.height);
     }
   }, [imgRef.current]);
@@ -75,8 +73,6 @@ export const About = () => {
 
     return () => observer.unobserve(x);
   }, []);
-
-  console.log('pin.active', pin.active)
 
   return (
     <div ref={aboutRef} className="relative h-[300vh] bg-raisin-black w-full flex flex-col flex-start text-center">
