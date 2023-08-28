@@ -24,6 +24,7 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
     setHovered(e.currentTarget.id);
   }
 
+  // @ts-ignore
   const maskPos: DOMRect | undefined = maskRef.current?.getBoundingClientRect();
   const maskSizePx = hovered === 'work' ? 125 : 0;
 
@@ -46,7 +47,7 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             animate={{
-              WebkitMaskPosition: `${x - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${y - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
+              WebkitMaskPosition: `${(x ?? 0) - (maskPos?.left ?? 0) - (maskSizePx / 2)}px ${(y ?? 0) - (maskPos?.top ?? 0) - (maskSizePx / 2)}px`,
               WebkitMaskSize: `${maskSizePx}px`,
               opacity: 1,
             }}>
