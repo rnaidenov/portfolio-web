@@ -62,6 +62,10 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
             <li>
               <a href="https://kremenarov.com/" target="_blank">kremenarov.com</a>
             </li>
+            <span className="hidden md:inline-block"> | </span>
+            <li>
+              <a href="https://www.forest-wedding.tech/invitation/dearestportfolioguest" target="_blank">Forest Wedding</a>
+            </li>
           </motion.ul>
 
           <li>
@@ -74,6 +78,10 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
           <span className="hidden md:inline-block"> | </span>
           <li>
             kremenarov.com
+          </li>
+          <span className="hidden md:inline-block"> | </span>
+          <li>
+            <a href="https://www.forest-wedding.tech/invitation/dearestportfolioguest" target="_blank">Forest Wedding</a>
           </li>
         </ul>
       </div>
