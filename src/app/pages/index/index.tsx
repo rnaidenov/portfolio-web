@@ -41,7 +41,7 @@ export const Index = () => {
     <div className={`${isNavHovered ? 'bg-wenge text-raisin-black' : 'bg-raisin-black'} w-full h-screen flex flex-col items-center justify-center text-center ${smoothTransitionClass}`} ref={indexRef}>
       <div className="relative">
         <div>
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold font-vt323 mb-2 text-mint-cream">
+          <h1 className="text-4xl md:text-5xl font-bold font-vt323 mb-2 text-mint-cream">
             Radoslav Naydenov
           </h1>
           <p className="text-md uppercase text-mint-cream">Full-stack dev</p>
