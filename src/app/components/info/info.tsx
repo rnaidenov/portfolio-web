@@ -91,7 +91,18 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
         <p className='-rotate-90 absolute top-0 bottom-0 left-0 text-mint-cream pt-2'>
           Contacts:
         </p>
-        <div className={`absolute bottom-full right-0 flex flex-col items-end gap-8 pb-4`}>
+        <motion.div
+          className={`absolute bottom-full right-0 flex flex-col items-end gap-8 pb-4`}
+          initial={{ opacity: 0, y: 20, rotate: 0 }}
+          animate={shouldShow ? { opacity: 1, y: 0, rotate: 0 } : { opacity: 0, y: 20, rotate: 0 }}
+          transition={{ 
+            duration: 0.35, 
+            delay: 0.1, 
+            type: "spring",
+            stiffness: 125,
+            damping: 15
+          }}
+        >
           <a
             id='calendar'
             href="https://calendly.com/radonaydenov"
@@ -113,7 +124,7 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
           >
             <img src="/email2.png" alt="Email" />
           </a>
-        </div>
+        </motion.div>
       </div>
     </div>
   )
