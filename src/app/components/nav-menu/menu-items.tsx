@@ -1,5 +1,5 @@
 export const MenuItems = () => (
-  <>
+  <ul className="flex flex-col items-center justify-center gap-1 text-2xl">
     <li>
       <a href="#about">
         About
@@ -15,5 +15,5 @@ export const MenuItems = () => (
         Contacts
       </a>
     </li>
-  </>
+  </ul>
 )
