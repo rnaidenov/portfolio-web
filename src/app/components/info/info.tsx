@@ -7,7 +7,6 @@ interface InfoProps {
 }
 
 export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
-  // use state for shouldShow; isNavHovered once, then shouldShow = true, don't change afterwards
   const [shouldShow, setShouldShow] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
 
@@ -103,27 +102,47 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
             damping: 15
           }}
         >
-          <a
-            id='calendar'
-            href="https://calendly.com/radonaydenov"
-            target="_blank"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={`transition rotate-[25deg] transition-all transition-1000 ${(hovered == 'calendar' || isNavHovered) ? 'text-outer-space scale-110' : 'text-flamy-orange scale-125'}`}
-          >
-            <img src="/calendar2.png" alt="Calendar" />
-          </a>
+          <div className="relative">
+            <a
+              id='calendar'
+              href="https://calendly.com/radonaydenov"
+              target="_blank"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className={`block transition rotate-[25deg] transition-all transition-1000 ${(hovered == 'calendar' || isNavHovered) ? 'text-outer-space scale-110' : 'text-flamy-orange scale-125'}`}
+            >
+              <img src="/calendar2.png" alt="Calendar" />
+            </a>
+            <motion.div
+              className="absolute bottom-full right-0 mb-2 p-1 bg-black text-mint-cream text-xs font-mono whitespace-nowrap"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: hovered === 'calendar' ? 1 : 0, scale: hovered === 'calendar' ? 1 : 0.9 }}
+              transition={{ duration: 0.15 }}
+            >
+              book a meeting
+            </motion.div>
+          </div>
 
-          <a
-            id='email'
-            href="mailto:radonaydenov@gmail.com"
-            target="_blank"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={`transition -rotate-[15deg] transition-all transition-1000 ${(hovered == 'email' || isNavHovered) ? 'text-outer-space scale-110' : 'text-flamy-orange scale-125'}`}
-          >
-            <img src="/email3.png" alt="Email" />
-          </a>
+          <div className="relative">
+            <a
+              id='email'
+              href="mailto:radonaydenov@gmail.com"
+              target="_blank"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className={`block transition -rotate-[15deg] transition-all transition-1000 ${(hovered == 'email' || isNavHovered) ? 'text-outer-space scale-110' : 'text-flamy-orange scale-125'}`}
+            >
+              <img src="/email3.png" alt="Email" />
+            </a>
+            <motion.div
+              className="absolute bottom-full right-0 mb-2 p-1 bg-black text-mint-cream text-xs font-mono whitespace-nowrap"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: hovered === 'email' ? 1 : 0, scale: hovered === 'email' ? 1 : 0.9 }}
+              transition={{ duration: 0.15 }}
+            >
+              send me an email
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </div>
