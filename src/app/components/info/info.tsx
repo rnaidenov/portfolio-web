@@ -109,9 +109,9 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
             target="_blank"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className={`transition rotate-[25deg] transition-all transition-500 ${(hovered == 'calendar' || isNavHovered) ? 'text-outer-space scale-95' : 'text-flamy-orange scale-100'}`}
+            className={`transition rotate-[25deg] transition-all transition-1000 ${(hovered == 'calendar' || isNavHovered) ? 'text-outer-space scale-110' : 'text-flamy-orange scale-125'}`}
           >
-            <img src="/calendar.png" alt="Calendar" />
+            <img src="/calendar2.png" alt="Calendar" />
           </a>
 
           <a
@@ -120,9 +120,9 @@ export const Info: React.FC<InfoProps> = ({ isNavHovered }) => {
             target="_blank"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className={`transition -rotate-[15deg] transition-all transition-500 ${(hovered == 'email' || isNavHovered) ? 'text-outer-space scale-95' : 'text-flamy-orange scale-100'}`}
+            className={`transition -rotate-[15deg] transition-all transition-1000 ${(hovered == 'email' || isNavHovered) ? 'text-outer-space scale-110' : 'text-flamy-orange scale-125'}`}
           >
-            <img src="/email2.png" alt="Email" />
+            <img src="/email3.png" alt="Email" />
           </a>
         </motion.div>
       </div>
